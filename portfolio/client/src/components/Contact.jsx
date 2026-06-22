@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiSend, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
-import api from '../utils/api';
+import api, { HAS_API } from '../utils/api';
 import styles from './Contact.module.css';
 
 export default function Contact({ personal }) {
@@ -16,9 +16,19 @@ export default function Contact({ personal }) {
   const handleSubmit = async e => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) { setError('Please fill in all required fields.'); return; }
+
+    if (!HAS_API) {
+      setStatus('error');
+      setError('The contact form is not connected in this deployment. Please email me directly.');
+      return;
+    }
+
     setStatus('loading'); setError('');
     try {
-      await api.post('/contact', form);
+      const response = await api.post('/contact', form);
+      if (response.data?.success !== true) {
+        throw new Error('Unexpected response from the contact service.');
+      }
       setStatus('success');
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (err) {

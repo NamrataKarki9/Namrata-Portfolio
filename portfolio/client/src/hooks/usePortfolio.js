@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import api from '../utils/api';
+import api, { HAS_API } from '../utils/api';
 
 const fallback = {
   personal: {
@@ -156,11 +156,21 @@ const fallback = {
 
 export function usePortfolio() {
   const [data, setData] = useState(fallback);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(HAS_API);
 
   useEffect(() => {
+    if (!HAS_API) {
+      setLoading(false);
+      return;
+    }
+
     api.get('/portfolio')
-      .then(r => setData(r.data))
+      .then(r => {
+        const next = r.data;
+        if (next && typeof next === 'object' && next.personal?.name && Array.isArray(next.projects)) {
+          setData(next);
+        }
+      })
       .catch(() => {}) // silently use fallback
       .finally(() => setLoading(false));
   }, []);

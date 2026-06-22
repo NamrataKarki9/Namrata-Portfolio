@@ -76,15 +76,19 @@ Create a repo and push this folder.
 - Root directory: repo root
 - Build command: `npm --prefix portfolio/client install && npm --prefix portfolio/client run build`
 - Output directory: `portfolio/client/dist`
-- Add env: `VITE_API_URL=https://your-railway-url.railway.app`
+- Add env only if you deployed the backend: `VITE_API_URL=https://your-railway-url.railway.app`
 - Deploy
 
 The repo root now includes `vercel.json`, which rewrites every route back to `index.html` so React Router can handle client-side navigation.
+If you are deploying only the frontend, leave `VITE_API_URL` unset and the site will use the bundled portfolio data instead of calling a missing API.
 
 ### 4. Update `client/src/utils/api.js` for production
 ```js
+export const API_BASE_URL = import.meta.env.VITE_API_URL?.trim() || '';
+export const HAS_API = Boolean(API_BASE_URL);
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: API_BASE_URL || undefined,
 });
 ```
 
