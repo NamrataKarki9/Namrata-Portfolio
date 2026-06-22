@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import api, { HAS_API } from '../utils/api';
 
-const fallback = {
+export const fallbackPortfolio = {
   personal: {
     name: "Namrata Karki",
     title: "Data Science & AI Enthusiast",
@@ -155,7 +155,7 @@ const fallback = {
 };
 
 export function usePortfolio() {
-  const [data, setData] = useState(fallback);
+  const [data, setData] = useState(fallbackPortfolio);
   const [loading, setLoading] = useState(HAS_API);
 
   useEffect(() => {
