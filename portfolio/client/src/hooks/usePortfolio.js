@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api, { HAS_API } from '../utils/api';
 
-const fallback = {
+export const fallbackPortfolio = {
   personal: {
     name: "Namrata Karki",
     title: "Data Science & AI Enthusiast",
@@ -155,12 +155,22 @@ const fallback = {
 };
 
 export function usePortfolio() {
-  const [data, setData] = useState(fallback);
-  const [loading, setLoading] = useState(true);
+  const [data, setData] = useState(fallbackPortfolio);
+  const [loading, setLoading] = useState(HAS_API);
 
   useEffect(() => {
-    axios.get('/api/portfolio')
-      .then(r => setData(r.data))
+    if (!HAS_API) {
+      setLoading(false);
+      return;
+    }
+
+    api.get('/portfolio')
+      .then(r => {
+        const next = r.data;
+        if (next && typeof next === 'object' && next.personal?.name && Array.isArray(next.projects)) {
+          setData(next);
+        }
+      })
       .catch(() => {}) // silently use fallback
       .finally(() => setLoading(false));
   }, []);

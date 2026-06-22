@@ -1,0 +1,10 @@
+{
+  "buildCommand": "npm --prefix portfolio/client install && npm --prefix portfolio/client run build",
+  "outputDirectory": "portfolio/client/dist",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
