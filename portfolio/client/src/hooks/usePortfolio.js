@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../utils/api';
 
 const fallback = {
   personal: {
@@ -159,7 +159,7 @@ export function usePortfolio() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('/api/portfolio')
+    api.get('/portfolio')
       .then(r => setData(r.data))
       .catch(() => {}) // silently use fallback
       .finally(() => setLoading(false));

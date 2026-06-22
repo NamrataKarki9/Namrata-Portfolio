@@ -79,6 +79,8 @@ Create a repo and push this folder.
 - Add env: `VITE_API_URL=https://your-railway-url.railway.app`
 - Deploy
 
+If you open a route like `/project/agriscan` directly and see a Vercel 404, keep `client/vercel.json` in the repo. It rewrites every route back to `index.html` so React Router can handle client-side navigation.
+
 ### 4. Update `client/src/utils/api.js` for production
 ```js
 const api = axios.create({

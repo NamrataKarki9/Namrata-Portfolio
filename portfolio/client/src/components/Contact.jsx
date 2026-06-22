@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FiSend, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
-import axios from 'axios';
+import api from '../utils/api';
 import styles from './Contact.module.css';
 
 export default function Contact({ personal }) {
@@ -18,7 +18,7 @@ export default function Contact({ personal }) {
     if (!form.name || !form.email || !form.message) { setError('Please fill in all required fields.'); return; }
     setStatus('loading'); setError('');
     try {
-      await axios.post('/api/contact', form);
+      await api.post('/contact', form);
       setStatus('success');
       setForm({ name: '', email: '', subject: '', message: '' });
     } catch (err) {
