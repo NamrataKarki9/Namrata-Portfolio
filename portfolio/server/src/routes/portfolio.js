@@ -118,6 +118,20 @@ const data = {
       color: "#5a8a6a"
     },
     {
+      id: "react-final",
+      title: "React Full Stack",
+      category: "Full Stack",
+      type: "Final Project",
+      tagline: "Full-stack React app with a Node.js/Express backend",
+      description: "A full-stack web application built with React on the frontend and Node.js/Express on the backend, with clean component structure and API integration.",
+      longDescription: "Built a full-stack web application using React for the frontend and Node.js/Express for the backend, implementing clean component structure, API integration, and scalable project organization.",
+      highlights: ["React frontend and Node.js/Express backend", "Clean component structure", "API integration", "Scalable project organization"],
+      tech: ["React", "Node.js", "Express.js", "JavaScript", "REST APIs"],
+      screenshots: [],
+      highlight: false,
+      color: "#6a5a8a"
+    },
+    {
       id: "kumaricinemas",
       title: "KumariCinemas",
       category: "Full Stack",
