@@ -49,6 +49,16 @@ The detail page loads them automatically. Missing images show a placeholder with
 
 ---
 
+## Adding Resume
+
+Put your resume PDF here:
+
+`client/public/Namrata Resume.pdf`
+
+The hero button downloads that file directly from the site. If you rename it, update `resumeUrl` and `resumeFileName` in `server/src/routes/portfolio.js` and the fallback data in `client/src/hooks/usePortfolio.js`.
+
+---
+
 ## Updating Content
 
 All portfolio data lives in **one file**: `server/src/routes/portfolio.js`

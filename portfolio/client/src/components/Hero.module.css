@@ -1,5 +1,6 @@
 .hero {
   position: relative;
+  isolation: isolate;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -15,6 +16,8 @@
   background-size: 28px 28px;
   opacity: 0.6;
   mask-image: radial-gradient(ellipse 75% 65% at 50% 50%, black 40%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .blob1 {
@@ -26,6 +29,7 @@
   background: radial-gradient(circle, rgba(164, 126, 130, 0.12) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  z-index: 0;
 }
 
 .blob2 {
@@ -37,6 +41,7 @@
   background: radial-gradient(circle, rgba(125, 79, 60, 0.07) 0%, transparent 70%);
   border-radius: 50%;
   pointer-events: none;
+  z-index: 0;
 }
 
 .container {
@@ -47,6 +52,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
+  z-index: 1;
 }
 
 .content { max-width: 680px; }
@@ -110,12 +117,16 @@
 
 .actions {
   display: flex;
+  align-items: center;
   gap: 0.75rem;
   flex-wrap: wrap;
   margin-bottom: 2.2rem;
 }
 
 .btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -135,6 +146,9 @@
 }
 
 .btnSecondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   letter-spacing: 0.04em;
@@ -151,6 +165,30 @@
   color: var(--text);
   border-color: var(--accent);
   background: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.btnDownload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.7rem 1.5rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(125, 79, 60, 0.28);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btnDownload:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: rgba(125, 79, 60, 0.14);
   transform: translateY(-1px);
 }
 
@@ -234,6 +272,7 @@
   animation: bounce 2.5s ease-in-out infinite;
   transition: all var(--transition);
   background: var(--surface);
+  z-index: 2;
 }
 
 .scrollBtn:hover { color: var(--accent); border-color: var(--accent); }

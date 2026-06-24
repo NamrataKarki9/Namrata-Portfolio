@@ -1,10 +1,12 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from 'react-icons/fi';
 import styles from './Hero.module.css';
 
 export default function Hero({ personal }) {
   const scroll = (id) => document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+  const resumeUrl = personal.resumeUrl || encodeURI('/Namrata Resume.pdf');
+  const resumeFileName = personal.resumeFileName || 'Namrata-Karki-Resume.pdf';
 
   return (
     <section className={styles.hero} id="home">
@@ -57,8 +59,17 @@ export default function Hero({ personal }) {
             initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
           >
-            <button className={styles.btnPrimary} onClick={() => scroll('#projects')}>View Projects</button>
-            <button className={styles.btnSecondary} onClick={() => scroll('#contact')}>Get in Touch</button>
+            <button type="button" className={styles.btnPrimary} onClick={() => scroll('#projects')}>View Projects</button>
+            <button type="button" className={styles.btnSecondary} onClick={() => scroll('#contact')}>Get in Touch</button>
+            <a
+              className={styles.btnDownload}
+              href={resumeUrl}
+              download={resumeFileName}
+              aria-label="Download resume"
+            >
+              <FiDownload size={15} />
+              Download Resume
+            </a>
           </motion.div>
 
           <motion.div className={styles.socials}
