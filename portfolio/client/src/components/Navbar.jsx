@@ -56,6 +56,7 @@ export default function Navbar({ name, email }) {
             {navLinks.map((link, i) => (
               <motion.button
                 key={link.label}
+                type="button"
                 className={styles.link}
                 onClick={() => handleNav(link.href)}
                 initial={{ opacity: 0, y: -8 }}
@@ -66,6 +67,7 @@ export default function Navbar({ name, email }) {
               </motion.button>
             ))}
             <button
+              type="button"
               className={styles.themeBtn}
               onClick={toggle}
               aria-label="Toggle theme"
@@ -82,10 +84,10 @@ export default function Navbar({ name, email }) {
           </nav>
 
           <div className={styles.mobileRight}>
-            <button className={styles.themeBtn} onClick={toggle} aria-label="Toggle theme">
+            <button type="button" className={styles.themeBtn} onClick={toggle} aria-label="Toggle theme">
               {theme === 'light' ? <FiMoon size={15} /> : <FiSun size={15} />}
             </button>
-            <button className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
+            <button type="button" className={styles.menuBtn} onClick={() => setMenuOpen(!menuOpen)} aria-label="Menu">
               <span className={`${styles.bar} ${menuOpen ? styles.b1 : ''}`} />
               <span className={`${styles.bar} ${menuOpen ? styles.b2 : ''}`} />
             </button>
@@ -103,7 +105,7 @@ export default function Navbar({ name, email }) {
             transition={{ duration: 0.18 }}
           >
             {navLinks.map(link => (
-              <button key={link.label} className={styles.mobileLink} onClick={() => handleNav(link.href)}>
+              <button key={link.label} type="button" className={styles.mobileLink} onClick={() => handleNav(link.href)}>
                 {link.label}
               </button>
             ))}

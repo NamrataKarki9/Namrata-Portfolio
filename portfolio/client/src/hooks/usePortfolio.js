@@ -10,7 +10,9 @@ export const fallbackPortfolio = {
     phone: "+977 ",
     location: "Aarubari, Kathmandu, Nepal",
     linkedin: "https://linkedin.com",
-    github: "https://github.com"
+    github: "https://github.com",
+    resumeUrl: encodeURI("/Namrata Resume.pdf"),
+    resumeFileName: "Namrata-Karki-Resume.pdf"
   },
   about: "I'm a BSc Computing student at Islington College (London Metropolitan University) with a deep interest in data science, artificial intelligence, and research-driven problem solving. I enjoy working with data — finding patterns, building models, and turning numbers into decisions. I've built full-stack production systems including a core banking internship, and I bring that engineering foundation into everything I do. Ultimately, I want to work at the intersection of data, AI, and meaningful technical research.",
   experience: [

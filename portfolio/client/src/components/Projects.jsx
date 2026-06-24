@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { forwardRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
@@ -67,9 +67,10 @@ export default function Projects({ projects }) {
   );
 }
 
-function ProjectCard({ project, index, inView, onClick }) {
+const ProjectCard = forwardRef(function ProjectCard({ project, index, inView, onClick }, ref) {
   return (
     <motion.article
+      ref={ref}
       className={`${styles.card} ${project.highlight ? styles.featured : ''}`}
       layout
       initial={{ opacity: 0, y: 20 }}
@@ -79,7 +80,12 @@ function ProjectCard({ project, index, inView, onClick }) {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={e => e.key === 'Enter' && onClick()}
+      onKeyDown={e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          onClick();
+        }
+      }}
     >
       {/* Color accent bar */}
       <div className={styles.accentBar} style={{ background: project.color || 'var(--accent)' }} />
@@ -118,4 +124,4 @@ function ProjectCard({ project, index, inView, onClick }) {
       </div>
     </motion.article>
   );
-}
+});
