@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail, FiArrowDown, FiDownload, FiEye } from 'react-icons/fi';
 import styles from './Hero.module.css';
 
 export default function Hero({ personal }) {
@@ -61,15 +61,27 @@ export default function Hero({ personal }) {
           >
             <button type="button" className={styles.btnPrimary} onClick={() => scroll('#projects')}>View Projects</button>
             <button type="button" className={styles.btnSecondary} onClick={() => scroll('#contact')}>Get in Touch</button>
-            <a
-              className={styles.btnDownload}
-              href={resumeUrl}
-              download={resumeFileName}
-              aria-label="Download resume"
-            >
-              <FiDownload size={15} />
-              Download Resume
-            </a>
+            <div className={styles.resumeActions}>
+              <a
+                className={styles.resumeBtn}
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="View resume"
+              >
+                <FiEye size={14} />
+                View Resume
+              </a>
+              <a
+                className={`${styles.resumeBtn} ${styles.resumeDownload}`}
+                href={resumeUrl}
+                download={resumeFileName}
+                aria-label="Download resume"
+              >
+                <FiDownload size={14} />
+                Download Resume
+              </a>
+            </div>
           </motion.div>
 
           <motion.div className={styles.socials}

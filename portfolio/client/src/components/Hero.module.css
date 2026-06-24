@@ -123,6 +123,13 @@
   margin-bottom: 2.2rem;
 }
 
+.resumeActions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
 .btnPrimary {
   display: inline-flex;
   align-items: center;
@@ -190,6 +197,44 @@
   border-color: var(--accent);
   background: rgba(125, 79, 60, 0.14);
   transform: translateY(-1px);
+}
+
+.resumeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-light);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.resumeBtn:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-light);
+  transform: translateY(-1px);
+}
+
+.resumeDownload {
+  background: var(--accent-light);
+  color: var(--accent);
+  border-color: rgba(125, 79, 60, 0.28);
+}
+
+.resumeDownload:hover {
+  color: var(--text);
+  background: rgba(125, 79, 60, 0.14);
+  border-color: var(--accent);
 }
 
 .socials {

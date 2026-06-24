@@ -55,7 +55,7 @@ Put your resume PDF here:
 
 `client/public/Namrata Resume.pdf`
 
-The hero button downloads that file directly from the site. If you rename it, update `resumeUrl` and `resumeFileName` in `server/src/routes/portfolio.js` and the fallback data in `client/src/hooks/usePortfolio.js`.
+The hero section now has separate `View` and `Download` buttons for that file. If you rename it, update `resumeUrl` and `resumeFileName` in `server/src/routes/portfolio.js` and the fallback data in `client/src/hooks/usePortfolio.js`.
 
 ---
 
